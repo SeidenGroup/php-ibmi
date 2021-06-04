@@ -90,5 +90,5 @@ if test "$PHP_IBMI" != "no"; then
   dnl In case of no dependencies
   AC_DEFINE(HAVE_IBMI, 1, [ Have ibmi support ])
 
-  PHP_NEW_EXTENSION(ibmi, ibmi.c, $ext_shared)
+  PHP_NEW_EXTENSION(ibmi, ccsid.c ibmi.c, $ext_shared)
 fi

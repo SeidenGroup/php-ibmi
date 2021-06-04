@@ -1,5 +1,5 @@
 --TEST--
-test1() Basic test
+get job and PASE CCSID
 --SKIPIF--
 <?php
 if (!extension_loaded('ibmi')) {
@@ -8,10 +8,15 @@ if (!extension_loaded('ibmi')) {
 ?>
 --FILE--
 <?php
-$ret = test1();
 
-var_dump($ret);
+// Since this is locale dependent, just test if these are integers
+
+$job = ibmi_get_job_ccsid(); // likely, but not always 37
+$pase = ibmi_get_pase_ccsid(); // likely, but not always 437/819/1208
+
+var_dump($job);
+var_dump($pase);
 ?>
---EXPECT--
-The extension ibmi is loaded and working!
-NULL
+--EXPECTF--
+int(%d)
+int(%d)

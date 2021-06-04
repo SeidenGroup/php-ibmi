@@ -2,6 +2,6 @@
 
 /** @generate-function-entries */
 
-function test1(): void {}
+function ibmi_get_job_ccsid(): int {}
 
-function test2(string $str = ""): string {}
+function ibmi_get_pase_ccsid(): int {}
