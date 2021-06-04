@@ -7,7 +7,11 @@
 #include "php.h"
 #include "ext/standard/info.h"
 #include "php_ibmi.h"
+#if PHP_MAJOR_VERSION >= 8
 #include "ibmi_arginfo.h"
+#else
+#include "ibmi_legacy_arginfo.h"
+#endif
 
 /* {{{ PHP_RINIT_FUNCTION */
 PHP_RINIT_FUNCTION(ibmi)

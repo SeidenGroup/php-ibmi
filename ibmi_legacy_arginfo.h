@@ -1,7 +1,7 @@
 /* This is a generated file, edit the .stub.php file instead.
  * Stub hash: 28b35e69def21bbc992bf90fc2e8e698b2710d43 */
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_ibmi_get_job_ccsid, 0, 0, IS_LONG, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_ibmi_get_job_ccsid, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_ibmi_get_pase_ccsid arginfo_ibmi_get_job_ccsid
