@@ -24,6 +24,21 @@ PHP_RINIT_FUNCTION(ibmi)
 }
 /* }}} */
 
+/* {{{ PHP_MINIT_FUNCTION */
+PHP_MINIT_FUNCTION(ibmi)
+{
+	/* no ini or global entries to init */
+
+	/* systemcl.c */
+	/* XXX: Convert to header */
+	REGISTER_LONG_CONSTANT("IBMI_CL_EBCDIC_OUTPUT", 0x1, CONST_CS | CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("IBMI_CL_SPAWN", 0x2, CONST_CS | CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("IBMI_CL_NO_MESSAGES", 0x4, CONST_CS | CONST_PERSISTENT);
+
+	return SUCCESS;
+}
+/* }}} */
+
 /* {{{ PHP_MINFO_FUNCTION */
 PHP_MINFO_FUNCTION(ibmi)
 {
@@ -38,7 +53,7 @@ zend_module_entry ibmi_module_entry = {
 	STANDARD_MODULE_HEADER,
 	"ibmi",					/* Extension name */
 	ext_functions,					/* zend_function_entry */
-	NULL,							/* PHP_MINIT - Module initialization */
+	PHP_MINIT(ibmi),							/* PHP_MINIT - Module initialization */
 	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
 	PHP_RINIT(ibmi),			/* PHP_RINIT - Request initialization */
 	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
