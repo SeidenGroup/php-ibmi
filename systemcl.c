@@ -14,7 +14,7 @@
  * We prefer building the flags instead of passing them to raw to PHP because
  * the default semantics are tricky for the average IBM i user.
  */
-static int build_systemCL_flags(int php_flags)
+static int build_systemCL_flags(PhpSystemClFlags php_flags)
 {
 	int new_flags = 0;
 	/* Capture spool to stdout, like "system" does. Maybe keep it later. */
@@ -110,7 +110,7 @@ static size_t handle_line(int type, zval *array, char *buf, size_t bufl) {
  * If type==3, output will be printed binary, no lines will be saved or returned (passthru)
  *
  */
-PHPAPI int php_ibmi_exec(int type, const char *cmd, int flags, zval *array, zval *return_value)
+PHPAPI int php_ibmi_exec(int type, const char *cmd, PhpSystemClFlags flags, zval *array, zval *return_value)
 {
 	FILE *fp;
 	char *buf;

@@ -21,6 +21,8 @@
 #endif
 
 /* Enum definitions */
-#define IBMI_CL_EBCDIC_OUTPUT 0x1
-#define IBMI_CL_SPAWN 0x2
-#define IBMI_CL_NO_MESSAGES 0x4
+typedef enum _PhpSystemClFlags {
+	IBMI_CL_EBCDIC_OUTPUT = 0x1,
+	IBMI_CL_SPAWN = 0x2,
+	IBMI_CL_NO_MESSAGES = 0x4,
+} PhpSystemClFlags;
