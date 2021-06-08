@@ -1,17 +1,5 @@
 /* ibmi extension for PHP (c) 2021 Calvin Buckley */
-
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
-
-#include "php.h"
-#include "ext/standard/info.h"
-#include "php_ibmi.h"
-#if PHP_MAJOR_VERSION >= 8
-#include "ibmi_arginfo.h"
-#else
-#include "ibmi_legacy_arginfo.h"
-#endif
+#include "php_ibmi_int.h"
 
 /* {{{ PHP_RINIT_FUNCTION */
 PHP_RINIT_FUNCTION(ibmi)
@@ -31,9 +19,9 @@ PHP_MINIT_FUNCTION(ibmi)
 
 	/* systemcl.c */
 	/* XXX: Convert to header */
-	REGISTER_LONG_CONSTANT("IBMI_CL_EBCDIC_OUTPUT", 0x1, CONST_CS | CONST_PERSISTENT);
-	REGISTER_LONG_CONSTANT("IBMI_CL_SPAWN", 0x2, CONST_CS | CONST_PERSISTENT);
-	REGISTER_LONG_CONSTANT("IBMI_CL_NO_MESSAGES", 0x4, CONST_CS | CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("IBMI_CL_EBCDIC_OUTPUT", IBMI_CL_EBCDIC_OUTPUT, CONST_CS | CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("IBMI_CL_SPAWN", IBMI_CL_SPAWN, CONST_CS | CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("IBMI_CL_NO_MESSAGES", IBMI_CL_NO_MESSAGES, CONST_CS | CONST_PERSISTENT);
 
 	return SUCCESS;
 }

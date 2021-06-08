@@ -1,8 +1,5 @@
 /* ibmi extension for PHP (c) 2021 Calvin Buckley */
-
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
+#include "php_ibmi_int.h"
 
 #include <stdio.h>
 #include <ctype.h>
@@ -12,28 +9,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <as400_protos.h>
-
-#include "php.h"
-#include "ext/standard/info.h"
-#include "SAPI.h"
-#include "php_ibmi.h"
-#if PHP_MAJOR_VERSION >= 8
-#include "ibmi_arginfo.h"
-#else
-#include "ibmi_legacy_arginfo.h"
-#endif
-
-/* For compatibility with older PHP versions */
-#ifndef ZEND_PARSE_PARAMETERS_NONE
-#define ZEND_PARSE_PARAMETERS_NONE() \
-	ZEND_PARSE_PARAMETERS_START(0, 0) \
-	ZEND_PARSE_PARAMETERS_END()
-#endif
-
-/* XXX: These should be moved to their own header so they aren't duplicated */
-#define IBMI_CL_EBCDIC_OUTPUT 0x1
-#define IBMI_CL_SPAWN 0x2
-#define IBMI_CL_NO_MESSAGES 0x4
 
 /**
  * We prefer building the flags instead of passing them to raw to PHP because

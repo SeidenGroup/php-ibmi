@@ -1,26 +1,7 @@
 /* ibmi extension for PHP (c) 2021 Calvin Buckley */
-
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
+#include "php_ibmi_int.h"
 
 #include <as400_protos.h>
-
-#include "php.h"
-#include "ext/standard/info.h"
-#include "php_ibmi.h"
-#if PHP_MAJOR_VERSION >= 8
-#include "ibmi_arginfo.h"
-#else
-#include "ibmi_legacy_arginfo.h"
-#endif
-
-/* For compatibility with older PHP versions */
-#ifndef ZEND_PARSE_PARAMETERS_NONE
-#define ZEND_PARSE_PARAMETERS_NONE() \
-	ZEND_PARSE_PARAMETERS_START(0, 0) \
-	ZEND_PARSE_PARAMETERS_END()
-#endif
 
 /* {{{ int ibmi_get_pase_ccsid() */
 PHP_FUNCTION(ibmi_get_pase_ccsid)
