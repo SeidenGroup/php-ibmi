@@ -42,6 +42,9 @@
 static int build_systemCL_flags(int php_flags)
 {
 	int new_flags = 0;
+	/* Capture spool to stdout, like "system" does. Maybe keep it later. */
+	/* XXX: make optional? */
+	new_flags |= SYSTEMCL_SPOOL_STDOUT;
 	/* Do the right thing by default (ASCII translation, out into EBCDIC) */
 	if (!(php_flags & IBMI_CL_EBCDIC_OUTPUT)) {
 		/* XXX: We don't filter stdin because we don't expect it */
@@ -54,7 +57,7 @@ static int build_systemCL_flags(int php_flags)
 		/* It doesn't really matter for now, since it's all jumbled... */
 		new_flags |= SYSTEMCL_MSG_STDOUT;
 	}
-	/* XXX: spool, environment, remove msgid */
+	/* XXX: keep spool, environment, remove msgid */
 	return new_flags;
 }
 
