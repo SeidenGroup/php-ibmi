@@ -14,7 +14,7 @@ function ibmi_get_pase_ccsid(): int {}
 /**
  * @param array $output
  */
-function ibmi_cl_exec(string $command, int $flags = -1, &$output = null): string|false {}
+function ibmi_cl_exec(string $command, int $flags = 0, &$output = null): string|false {}
 
 function ibmi_cl_system(string $command, int $flags = 0): string|false {}
 

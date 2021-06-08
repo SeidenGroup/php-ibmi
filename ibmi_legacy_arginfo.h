@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ddd21b8f698ca97641d4caf66dc37b447d6d68e9 */
+ * Stub hash: afa127565cdaa6295fa17df4251e1230962b9a9f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_ibmi_get_job_ccsid, 0, 0, 0)
 ZEND_END_ARG_INFO()
