@@ -19,3 +19,9 @@ function ibmi_cl_exec(string $command, int $flags = 0, &$output = null): string|
 function ibmi_cl_system(string $command, int $flags = 0): string|false {}
 
 function ibmi_cl_passthru(string $command, int $flags = 0): ?bool {}
+
+/* files.c */
+/**
+ * @return array|false
+ */
+function ibmi_stat(string $filename) {}
