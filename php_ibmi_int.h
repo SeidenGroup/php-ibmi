@@ -20,6 +20,20 @@
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
+#if PHP_MAJOR_VERSION < 8
+/*
+ * Not the right semantics (returns false instead of throws) but matches other
+ * functions' behaviour in 7.x. The ##__VA_ARGS__ trick is an extension that's
+ * supported in GNU C. Since things built for the RPM world in PASE use GCC,
+ * this is no problem.
+ */
+#define zend_argument_value_error(arg, msg, ...) php_error_docref(NULL, E_WARNING, "Argument %d " msg, arg  ##__VA_ARGS__)
+#endif
+
+#ifndef RETURN_THROWS
+#define RETURN_THROWS() RETURN_FALSE
+#endif
+
 /* Enum definitions */
 typedef enum _PhpSystemClFlags {
 	IBMI_CL_EBCDIC_OUTPUT = 0x1,

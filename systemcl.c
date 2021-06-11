@@ -232,7 +232,12 @@ static void php_ibmi_exec_ex(INTERNAL_FUNCTION_PARAMETERS, int mode) /* {{{ */
 			ZVAL_DEREF(ret_array);
 			SEPARATE_ARRAY(ret_array);
 		} else {
+#if PHP_VERSION_ID >= 70400
 			ret_array = zend_try_array_init(ret_array);
+#else
+			zval_ptr_dtor(ret_array);
+			array_init(ret_array);
+#endif
 			if (!ret_array) {
 				RETURN_THROWS();
 			}
