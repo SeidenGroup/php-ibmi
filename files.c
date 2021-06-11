@@ -40,7 +40,7 @@ PHP_FUNCTION(ibmi_stat)
 		*objtype_first_space = '\0';
 	}
 
-	array_init(return_value);
+	array_init_size(return_value, 3);
 	/*
 	 * We don't add a numeric index, just associative. This can be changed
 	 * if we want to more closely match the semantics of PHP stat.
