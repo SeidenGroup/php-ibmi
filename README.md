@@ -12,6 +12,61 @@ While some of this was possible before, it required workarounds like calling int
 QSH or the FFI extension (which may be restricted). Some of it wasn't even
 possible at all.
 
+## Documentation
+
+### CCSID functions
+
+#### `int ibmi_get_pase_ccsid()`
+
+Returns the current ASCII/PASE CCSID for the job.
+
+#### `int ibmi_get_job_ccsid()`
+
+Returns the current EBCDIC/job CCSID.
+
+### File functions
+
+#### `array|false ibmi_stat(string $filename)`
+
+Returns an array with entries `codepage`, `ccsid`, and `objtype`.
+Their values are equal to the `st_objtype`, `st_codepage`, and `st_ccsid`
+values returned by ILE [stat](https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/stat.htm).
+
+Similar to the PHP function [stat](https://www.php.net/manual/en/function.stat.php).
+
+### CL commands
+
+These execute CL commands in the context of the job.
+
+The command is run with the PASE function [systemCL](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/pase_systemcl.htm).
+The output is captured and read out in a separate file descriptor.
+
+Flags that can be given to change behaviour are:
+
+* `IBMI_CL_SPAWN`: A new job is spawned for the CL.
+* `IBMI_CL_NO_MESSAGES`: Skip printing out IBM i messages i.e. "CPF0000".
+* `IBMI_CL_EBCDIC_OUTPUT`: Do not convert output from EBCDIC (assumed) to ASCII/Unicode.
+
+#### `string|false ibmi_cl_system(string $command, int $flags = 0)`
+
+Executes and prints output to stdout, while returning the last line as a string.
+
+Equivalent to the PHP function [system](https://www.php.net/manual/en/function.system.php).
+
+#### `?bool ibmi_cl_passthru(string $command, int $flags = 0)`
+
+Executes and prints output to stdout.
+
+Equivalent to the PHP function [passthru](https://www.php.net/manual/en/function.passthru.php).
+
+#### `string|false ibmi_cl_exec(string $command, int $flags = 0, array &$output = null)`
+
+Executes and returns the last line as a string.
+
+If `$output` is set, the array will be filled with each line of the output.
+
+Equivalent to the PHP function [exec](https://www.php.net/manual/en/function.exec.php).
+
 ## Licensing
 
 Please see `LICENSE`; this extension uses code from PHP and thus is kept under
