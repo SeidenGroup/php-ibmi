@@ -25,3 +25,6 @@ function ibmi_cl_passthru(string $command, int $flags = 0): ?bool {}
  * @return array|false
  */
 function ibmi_stat(string $filename) {}
+
+/* xmlservice.c */
+function ibmi_xmlservice(string $input, string $ctl = "", string $ipc = ""): string|false {}

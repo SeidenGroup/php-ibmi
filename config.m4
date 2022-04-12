@@ -20,5 +20,5 @@ if test "$PHP_IBMI" != "no"; then
 
   AC_DEFINE(HAVE_IBMI, 1, [ Have ibmi support ])
 
-  PHP_NEW_EXTENSION(ibmi, ccsid.c systemcl.c files.c ibmi.c, $ext_shared)
+  PHP_NEW_EXTENSION(ibmi, ccsid.c systemcl.c files.c ibmi.c xmlservice.c, $ext_shared)
 fi
